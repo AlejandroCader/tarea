@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Appointment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+            <form th:action="@{'/edit/' + ${patient.id}}" method="post">
+                <!-- Input fields for editing the appointment -->
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date</label>
+                    <input type="date" class="form-control" id="appointmentDate" th:field="*{appointment.day}" placeholder="Select Date">
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time</label>
+                    <input type="time" class="form-control" id="appointmentTime" th:field="*{appointment.time}" placeholder="Select Time">
+                </div>
+
+                <!-- Input fields for editing patient information -->
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input type="text" class="form-control" id="name" th:field="*{patient.name}" placeholder="Enter First Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" th:field="*{patient.lastName}" placeholder="Enter Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="date" class="form-control" id="birthdate" th:field="*{patient.birthdate}" placeholder="Select Date of Birth">
+                </div>
+
+                <!-- Input fields for editing address information -->
+                <div class="form-group">
+                    <label for="address1">Address Line 1</label>
+                    <input type="text" class="form-control" id="address1" th:field="*{address.address1}" placeholder="Enter Address Line 1">
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address Line 2</label>
+                    <input type="text" class="form-control" id="address2" th:field="*{address.address2}" placeholder="Enter Address Line 2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" th:field="*{address.city}" placeholder="Enter City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="region">Region</label>
+                        <input type="text" class="form-control" id="region" th:field="*{address.region}" placeholder="Enter Region">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="zipCode">Zip Code</label>
+                        <input type="text" class="form-control" id="zipCode" th:field="*{address.zipCode}" placeholder="Enter Zip Code">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
