@@ -33,7 +33,7 @@ public class AppointmentController {
     @GetMapping(value = "/view/{id}")
     public String view(@PathVariable(value = "id") Long id, Map<String, Object> model,
                       RedirectAttributes flash){
-        Patient patient = patientService.findOne(id);
+        Patient patient = patientService.findById(id);
         Address address = addressService.findById(id);
         Appointment appointment = appointmentService.findById(id);
 
@@ -105,7 +105,7 @@ public class AppointmentController {
 
     @GetMapping(value = "/edit/{id}")
     public String edit(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {
-        Patient patient = patientService.findOne(id);
+        Patient patient = patientService.findById(id);
 
         if (patient != null) {
             // Obtener la cita relacionada con el paciente
@@ -134,7 +134,7 @@ public class AppointmentController {
             , RedirectAttributes flash) {
 
         // Obtener el paciente original
-        Patient originalPatient = patientService.findOne(id);
+        Patient originalPatient = patientService.findById(id);
         Appointment originalAppointment = appointmentService.findById(id);
         Address originalAddress = addressService.findById(id);
 
@@ -168,12 +168,10 @@ public class AppointmentController {
         }
     }
 
-
-
     @RequestMapping(value = "/delete/{id}")
     public String deleteAppointment(@PathVariable(value = "id") Long id, RedirectAttributes flash){
         if (id > 0) {
-            Patient patient = patientService.findOne(id);
+            Patient patient = patientService.findById(id);
 
             if (patient != null) {
                 addressService.deleteAddressesByPatientId(id);

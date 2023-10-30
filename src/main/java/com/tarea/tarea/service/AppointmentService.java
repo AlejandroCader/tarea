@@ -27,10 +27,6 @@ public class AppointmentService {
     public void save(Appointment appointment) {
         appointmentRepository.save(appointment);
     }
-    @Transactional
-    public void delete(Long id) {
-        appointmentRepository.deleteById(id);
-    }
 
     @Transactional
     public void deleteAppointmentsByPatientId(Long patientId) {

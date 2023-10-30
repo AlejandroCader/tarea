@@ -25,10 +25,6 @@ public class AddressService {
     public void save(Address address) {
         addressRepository.save(address);
     }
-    @Transactional
-    public void delete(Long id) {
-        addressRepository.deleteById(id);
-    }
 
     @Transactional
     public void deleteAddressesByPatientId(Long patientId) {

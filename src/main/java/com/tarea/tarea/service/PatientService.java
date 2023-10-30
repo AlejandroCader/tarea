@@ -20,14 +20,12 @@ public class PatientService {
         patientRepository.save(patient);
         return patient;
     }
-    public Patient findById(Long id){
-        return patientRepository.findById(id).orElse(null);
-    }
 
     @Transactional(readOnly = true)
     public List<Patient> findAll(){
         return (List<Patient>) patientRepository.findAll();
     }
+
     @Transactional(readOnly = true)
     public Page<Patient> findAll(Pageable pageable) {
         return patientRepository.findAll(pageable);
@@ -39,7 +37,7 @@ public class PatientService {
     }
 
     @Transactional(readOnly = true)
-    public Patient findOne(Long id) {
+    public Patient findById(Long id) {
         return patientRepository.findById(id).orElse(null);
     }
 
